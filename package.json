@@ -1,10 +1,24 @@
 {
   "name": "jira-kanban-clone",
-  "version": "2.0.0",
-  "description": "Static Jira-like Kanban board on MockAPI, deployable to Vercel",
+  "version": "3.0.0",
+  "description": "Jira-like Kanban board on React + MockAPI, deployable to Vercel",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "npx --yes serve -l 3000 .",
-    "start": "npx --yes serve -l 3000 ."
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.62.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
   }
 }

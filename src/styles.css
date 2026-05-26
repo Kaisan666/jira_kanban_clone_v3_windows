@@ -25,6 +25,15 @@ h1 { font-size: 26px; letter-spacing: -0.02em; }
 
 .hidden { display: none !important; }
 
+.bootstrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .auth-screen {
   min-height: 100vh;
   display: flex;
@@ -92,6 +101,15 @@ h1 { font-size: 26px; letter-spacing: -0.02em; }
   background: #ffebe6;
   color: #bf2600;
   font-size: 13px;
+  font-weight: 700;
+}
+
+.error-banner {
+  margin: 14px 20px 0;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #ffebe6;
+  color: #bf2600;
   font-weight: 700;
 }
 
@@ -198,10 +216,7 @@ h1 { font-size: 26px; letter-spacing: -0.02em; }
   box-shadow: 0 4px 10px rgba(9, 30, 66, 0.18);
 }
 
-.task-card.dragging {
-  opacity: 0.55;
-  transform: rotate(1deg);
-}
+.task-card:active { cursor: grabbing; }
 
 .task-key {
   color: var(--muted);
@@ -295,25 +310,15 @@ h1 { font-size: 26px; letter-spacing: -0.02em; }
   cursor: pointer;
 }
 
-.primary-btn {
-  color: white;
-  background: var(--blue);
-}
+.primary-btn { color: white; background: var(--blue); }
+.primary-btn:hover { background: var(--blue-hover); }
+.primary-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-.primary-btn:hover { background: var(--blue-hover); color: white; }
-
-.secondary-btn {
-  color: var(--blue);
-  background: #deebff;
-}
-
+.secondary-btn { color: var(--blue); background: #deebff; }
 .secondary-btn:hover { background: #c7ddff; }
+.secondary-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-.ghost-btn {
-  color: white;
-  background: rgba(255, 255, 255, 0.14);
-}
-
+.ghost-btn { color: white; background: rgba(255, 255, 255, 0.14); }
 .ghost-btn:hover { background: rgba(255, 255, 255, 0.24); }
 
 .danger-btn {
@@ -321,8 +326,8 @@ h1 { font-size: 26px; letter-spacing: -0.02em; }
   background: #ffebe6;
   margin-right: auto;
 }
-
 .danger-btn:hover { background: #ffbdad; }
+.danger-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
 .topbar .primary-btn { background: #ffffff; color: #0747a6; }
 .topbar .primary-btn:hover { background: #deebff; color: #0747a6; }
