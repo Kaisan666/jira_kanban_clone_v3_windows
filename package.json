@@ -1,0 +1,10 @@
+{
+  "name": "jira-kanban-clone",
+  "version": "2.0.0",
+  "description": "Static Jira-like Kanban board on MockAPI, deployable to Vercel",
+  "private": true,
+  "scripts": {
+    "dev": "npx --yes serve -l 3000 .",
+    "start": "npx --yes serve -l 3000 ."
+  }
+}

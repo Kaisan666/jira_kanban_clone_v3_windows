@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <section id="authScreen" class="auth-screen">
+    <div class="auth-card">
+      <div class="auth-brand">Self-hosted Jira-like board</div>
+      <h1>Вход в Kanban</h1>
+      <p class="auth-hint">Админ уже создан: логин <b>1</b>, пароль <b>1</b>.</p>
+
+      <div class="auth-tabs">
+        <button id="loginTab" class="tab active" type="button">Вход</button>
+        <button id="registerTab" class="tab" type="button">Регистрация</button>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <label>
+          Логин
+          <input name="username" autocomplete="username" value="1" required />
+        </label>
+        <label>
+          Пароль
+          <input name="password" type="password" autocomplete="current-password" value="1" required />
+        </label>
+        <button class="primary-btn full" type="submit">Войти</button>
+      </form>
+
+      <form id="registerForm" class="auth-form hidden">
+        <label>
+          Имя на доске
+          <input name="displayName" placeholder="Например: Владислав" required />
+        </label>
+        <label>
+          Логин
+          <input name="username" autocomplete="username" required />
+        </label>
+        <label>
+          Пароль
+          <input name="password" type="password" autocomplete="new-password" required />
+        </label>
+        <button class="primary-btn full" type="submit">Зарегистрироваться</button>
+      </form>
+
+      <div id="authError" class="error-box hidden"></div>
+    </div>
+  </section>
+
+  <section id="appScreen" class="app-screen hidden">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">Self-hosted Jira-like board</div>
+        <h1>Kanban</h1>
+      </div>
+      <div class="topbar-actions">
+        <span id="currentUser" class="current-user"></span>
+        <button id="openCreateModal" class="primary-btn">Создать задачу</button>
+        <button id="logoutBtn" class="ghost-btn">Выйти</button>
+      </div>
+    </header>
+
+    <main id="board" class="board"></main>
+  </section>
+
+  <div id="createModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Новая задача</h2>
+        <button id="closeCreateModal" class="icon-btn">×</button>
+      </div>
+      <form id="createTaskForm">
+        <label>
+          Название
+          <input name="title" placeholder="Например: Проверить форму логина" required />
+        </label>
+        <label>
+          Описание
+          <textarea name="description" placeholder="Короткое описание задачи"></textarea>
+        </label>
+        <label>
+          Текстовое поле / детали
+          <textarea name="details" placeholder="Любые подробности, заметки, ссылки, чек-лист текстом"></textarea>
+        </label>
+        <div class="form-grid">
+          <label>
+            Приоритет
+            <select name="priority">
+              <option>High</option>
+              <option selected>Medium</option>
+              <option>Low</option>
+            </select>
+          </label>
+          <label>
+            Всего пунктов
+            <input name="checklistTotal" type="number" min="0" value="0" />
+          </label>
+        </div>
+        <button class="primary-btn full" type="submit">Добавить в Backlog</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="taskModal" class="modal hidden">
+    <div class="modal-card wide">
+      <div class="modal-header">
+        <div>
+          <div id="taskModalKey" class="task-key"></div>
+          <h2>Карточка задачи</h2>
+        </div>
+        <button id="closeTaskModal" class="icon-btn">×</button>
+      </div>
+
+      <form id="editTaskForm">
+        <input type="hidden" name="id" />
+        <label>
+          Название
+          <input name="title" required />
+        </label>
+        <label>
+          Описание
+          <textarea name="description"></textarea>
+        </label>
+        <label>
+          Текстовое поле
+          <textarea name="details" placeholder="Сюда можно писать заметки, ТЗ, комментарии, ссылки"></textarea>
+        </label>
+        <div class="form-grid three">
+          <label>
+            Статус
+            <select name="status"></select>
+          </label>
+          <label>
+            Приоритет
+            <select name="priority">
+              <option>High</option>
+              <option>Medium</option>
+              <option>Low</option>
+            </select>
+          </label>
+          <label>
+            Исполнитель
+            <select name="assigneeId"></select>
+          </label>
+        </div>
+        <div class="form-grid three">
+          <label>
+            Счетчик: выполнено
+            <input name="checklistDone" type="number" min="0" />
+          </label>
+          <label>
+            Счетчик: всего
+            <input name="checklistTotal" type="number" min="0" />
+          </label>
+          <label>
+            Создано
+            <input id="taskCreatedInfo" disabled />
+          </label>
+        </div>
+        <div class="modal-actions">
+          <button id="assignMeFromModal" class="secondary-btn" type="button">Повесить на себя</button>
+          <button class="primary-btn" type="submit">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
