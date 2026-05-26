@@ -152,7 +152,7 @@ function renderBoard() {
   for (const column of columns) {
     const columnTasks = tasks
       .filter(task => task.status === column.id)
-      .sort((a, b) => a.position - b.position || String(b.id).localeCompare(String(a.id)));
+      .sort((a, b) => a.position - b.position || Number(b.id) - Number(a.id));
 
     const columnElement = document.createElement('section');
     columnElement.className = 'column';
